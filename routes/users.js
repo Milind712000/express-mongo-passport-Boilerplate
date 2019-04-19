@@ -1,33 +1,50 @@
 const router = require('express').Router();
+const passport = require("passport")
+const Users = require('../models/Users')
 
-router.get("/login", (req, res, next) => {
-    res.send("Login")
+router.get("/logout", (req, res, next) => {	//TODO add routing guards
+	req.logOut()
+	res.send("logged out")
 })
 
-router.post("/login", (req, res, next) => {
-    res.redirect("/")
-    res.redirect("/login")
+router.get("/login", (req, res, next) => {	//TODO add routing guards
+	res.send("Login")
 })
 
-router.get("/signup", (req, res, next) => {
-    res.send("Sign up page")
+router.post("/login", passport.authenticate('local', 	//TODO add routing guards
+{
+	successRedirect : "/users/edit",
+	failureRedirect : "/home"
+}
+ ))
+
+router.get("/signup", (req, res, next) => {	//TODO add routing guards
+	res.send("Sign up page")
 })
 
-router.post("/signup", (req, res, next) => {
-    res.redirect("/login")
-    res.redirect("/signup")
+router.post("/signup", (req, res, next) => {	//TODO add routing guards and validation
+	// check the req body
+	console.log(req.body)
+	Users.create(req.body)
+	.then( user => {
+		res.send(user.username + ' was saved')
+	})
+	.catch( err => {
+		console.log(err)
+		res.send("Couldn't save user")
+	})
 })
 
-router.get("/edit", (req, res, next) => {
-    res.send("edit profile")
+router.get("/edit", (req, res, next) => {	//TODO add routing guards
+	res.send("User : "+(req.user ? req.user.username : null))
 })
 
-router.put("/edit", (req, res, next) => {
-    res.redirect("/edit")
-})
+// router.put("/edit", (req, res, next) => {	//TODO add routing guards
+// 	res.redirect("/edit")
+// })
 
-router.get("/:username", (req, res, next) => {
-    res.send(`Details of user : ${req.params.username}`)
-})
+// router.get("/:username", (req, res, next) => {	//TODO add routing guards
+// 	res.send(`Details of user : ${req.params.username}`)
+// })
 
 module.exports = router;
