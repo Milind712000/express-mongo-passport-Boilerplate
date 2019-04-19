@@ -13,6 +13,7 @@ module.exports = {
 		'ecmaVersion': 2018
 	},
 	'rules': {
+		'no-console': ["error", { allow: ["log"] }],
 		'indent': [
 			'error',
 			'tab'

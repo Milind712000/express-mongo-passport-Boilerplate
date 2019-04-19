@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-const schema = mongoose.Schema
+const mongoose = require('mongoose');
+const schema = mongoose.Schema;
 
 const user = new schema({
 	username : {
@@ -14,15 +14,15 @@ const user = new schema({
 		type : Date,
 		default : Date.now()
 	}
-})
+});
 
 user.methods.checkPassword = function(password) {
 	if(this.password === password) return true;
-	else return false
-}
+	else return false;
+};
 
 // TODO add pre save hook to hash passwords
 
-const User = mongoose.model('User', user)
+const User = mongoose.model('User', user);
 
-module.exports = User
+module.exports = User;
