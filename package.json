@@ -9,8 +9,10 @@
   "author": "Milind712000",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "express-async-handler": "^1.1.4",
     "express-session": "^1.15.6",
     "mongoose": "^5.4.22",
     "morgan": "^1.9.1",

@@ -132,8 +132,8 @@ app.use((req, res) => {
 
 // error handling
 app.use((err, req, res, next) => {
+	console.log('ErrorMessage : ',err.message);
 	if (res.headersSent) next(err);
-	console.log(err.message);
 	res.send('Something Broke !!');
 });
 
