@@ -25,6 +25,15 @@ router.get('/signup', (req, res) => {	//TODO add routing guards
 router.post('/signup', (req, res) => {	//TODO add routing guards and validation
 	// check the req body
 	console.log(req.body);
+	// const newUser = new Users(req.body);
+	// newUser.save( (err, user) => {
+	// 	if(err){
+	// 		console.log(err);
+	// 		res.send('Couldn\'t save user');}
+	// 	else {
+	// 		res.send(user.username + ' was saved');	
+	// 	}
+	// });
 	Users.create(req.body)
 		.then( user => {
 			res.send(user.username + ' was saved');
