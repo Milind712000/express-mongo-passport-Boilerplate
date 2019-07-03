@@ -35,6 +35,10 @@ db.once('error', (err) => {
 	console.log(err.message);
 });
 
+
+// serve static files
+app.use('/static', express.static(path.join(__dirname, 'public')));
+
 // setup template engine
 app.set('views', path.join(__dirname, 'views')); //by default the 'views' folder is used so this line is not actually required
 app.set('view engine', 'ejs');
