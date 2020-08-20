@@ -9,7 +9,7 @@
   "author": "Milind712000",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-async-handler": "^1.1.4",
